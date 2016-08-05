@@ -5,6 +5,8 @@
 ### what
 sticky-scroll keeps an eye on your element and whenever content is added inside of it, it scrolls down so that the viewer can remain focused on the newest content!
 
+[view live demo on jsfiddle](https://jsfiddle.net/heatherbooker/13uf74vh/)
+
 ### how
 (0) Include jQuery in your main html file (*relies on jQuery!*)
 ```
