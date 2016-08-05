@@ -1,8 +1,8 @@
-# sticky-scroll
-## a [vue.js](https://vuejs.org/guide/) directive that keeps an element scrolled to the bottom
+# vue-sticky-scroll
+## a vue.js directive that keeps an element scrolled to the bottom
 
 
-sticky-scroll keeps an eye on your element and whenever content is added inside of it, it scrolls down so that the viewer can remain focused on the newest content!
+vue-sticky-scroll keeps an eye on your element and whenever content is added inside of it, it scrolls down so that the viewer can remain focused on the newest content!
 
 [view live demo on jsfiddle](https://jsfiddle.net/heatherbooker/13uf74vh/)
 
@@ -35,8 +35,10 @@ if you prefer a smooth scroll, add:
 
 
 ### how it works
-sticky-scroll uses a wonderful, highly underrated browser feature: [mutation observers](https://developer.mozilla.org/en/docs/Web/API/MutationObserver). By creating a `new MutationObserver` and telling it which events to `.observe()`, you can do wonderful things!  
+
+vue-sticky-scroll uses a wonderful, highly underrated browser feature: [mutation observers](https://developer.mozilla.org/en/docs/Web/API/MutationObserver). By creating a `new MutationObserver` and telling it which events to `.observe()`, you can do wonderful things!  
 This method is much simpler than some implementations of sticky scrolling that use requestAnimationFrame.
 
 ### license
+
 WTFPL
