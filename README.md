@@ -11,7 +11,7 @@ vue-sticky-scroll keeps an eye on your element and whenever content is added ins
 Include it in your main html file:
 
 ```html
-<script src='https://cdn.rawgit.com/heatherbooker/sticky-scroll/master/stickyScroll.js'></script>
+<script src='https://cdn.rawgit.com/heatherbooker/vue-sticky-scroll/master/stickyScroll.js'></script>
 ```
 
 Add `v-sticky-scroll` as an attribute on the element you wish to always scroll to the bottom of:
