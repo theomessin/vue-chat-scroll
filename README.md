@@ -35,5 +35,5 @@ sticky-scroll keeps an eye on your element and whenever content is added inside 
 sticky-scroll uses a wonderful, highly underrated browser feature: [mutation observers](https://developer.mozilla.org/en/docs/Web/API/MutationObserver). By creating a `new MutationObserver` and telling it which events to `.observe()`, you can do wonderful things! 
 This method is much simpler than some implementations of sticky scrolling that use requestAnimationFrame.
 
-### License
+### license
 WTFPL
