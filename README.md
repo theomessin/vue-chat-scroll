@@ -14,16 +14,18 @@ Include it in your main html file:
 <script src='https://cdn.rawgit.com/heatherbooker/sticky-scroll/master/stickyScroll.js'></script>
 ```
 
-Add 'v-sticky-scroll' as an attribute on the element you wish to always scroll to the bottom of:
+Add `v-sticky-scroll` as an attribute on the element you wish to always scroll to the bottom of:
 
 ```html
 <div class='i-wish-this-would-scroll' v-sticky-scroll></div>
 ```
 
-### options
-ANIMATE
-the scrolling will jump to the bottom by default. if you prefer a smooth scroll, add
-argument 'animate' and (optional) expression <numOfMilliseconds> (default is 300)
+### options: animate
+
+the scrolling will jump to the bottom by default.   
+if you prefer a smooth scroll, add:
+- argument 'animate'
+- optional: expression <numOfMilliseconds> (default is 300)
 
 ```html
 <div class='i-wish-this-would-scroll' v-sticky-scroll:animate></div>
@@ -33,7 +35,8 @@ argument 'animate' and (optional) expression <numOfMilliseconds> (default is 300
 
 
 ### how it works
-sticky-scroll uses a wonderful, highly underrated browser feature: [mutation observers](https://developer.mozilla.org/en/docs/Web/API/MutationObserver). By creating a `new MutationObserver` and telling it which events to `.observe()`, you can do wonderful things! 
+sticky-scroll uses a wonderful, highly underrated browser feature: [mutation observers](https://developer.mozilla.org/en/docs/Web/API/MutationObserver). By creating a `new MutationObserver` and telling it which events to `.observe()`, you can do wonderful things!  
 This method is much simpler than some implementations of sticky scrolling that use requestAnimationFrame.
 
-**license**: WTFPL
+### license
+WTFPL
