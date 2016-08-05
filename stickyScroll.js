@@ -9,19 +9,47 @@ Vue.directive('sticky-scroll', {
 
     //need reference to this, otherwise 'this'=MutationObserver
     var me = this;
+
+    function animateScroll(duration) {
+
+      var start = me.el.scrollTop;
+      var end = me.el.scrollHeight;
+      var change = end - start;
+      var increment = 20;
+
+      function easeInOut(currentTime, start, change, duration) {
+        //by Robert Penner
+        currentTime /= duration / 2;
+        if (currentTime < 1) {
+          return change / 2 * currentTime * currentTime + start;
+        }
+        currentTime -= 1;
+        return -change / 2 * (currentTime * (currentTime - 2) - 1) + start;
+      }
+
+      function animate(elapsedTime) {
+        elapsedTime += increment;
+        var position = easeInOut(elapsedTime, start, change, duration);
+        me.el.scrollTop = position;
+        if (elapsedTime < duration) {
+          setTimeout(function() {
+            animate(elapsedTime);
+          }, increment)
+        }
+      }
+      animate(0);
+    }
+
     function scrollToBottom() {
       if (me.arg === 'animate') {
-        var timeToAnimate = Number(me.expression) || 300;
-        $(me.el).animate({
-          scrollTop: $(me.el).prop("scrollHeight")
-        }, timeToAnimate);
+        //default is 300
+        var duration = Number(me.expression) || 300;
+        animateScroll(duration);
       } else {
         //default is jump to bottom
-        console.log('jumping');
-        $(me.el)
-          .scrollTop($(me.el)
-          .prop("scrollHeight"));
+        me.el.scrollTop = me.el.scrollHeight;
       }
     }
   }
 });
+
