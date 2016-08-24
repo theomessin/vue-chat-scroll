@@ -1,6 +1,6 @@
 {
   "name": "vue-sticky-scroll",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "a vue.js directive that keeps an element scrolled to the bottom as new content is added",
   "main": "stickyScroll.js",
   "scripts": {
