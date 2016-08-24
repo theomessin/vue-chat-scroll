@@ -6,13 +6,31 @@ vue-sticky-scroll keeps an eye on your element and whenever content is added ins
 
 [view live demo on jsfiddle](https://jsfiddle.net/heatherbooker/13uf74vh/)
 
-### usage instructions
+### install / include
+
+NPM:
+
+```bash
+npm i --save vue-sticky-scroll
+```
+Require it in your vue.js component file:
+
+```javascript
+// ES5
+var stickyScroll = require('vue-sticky-scroll');
+// ES6
+import 'vue-sticky-scroll';
+```
+
+CDN:
 
 Include it in your main html file:
 
 ```html
 <script src='https://cdn.rawgit.com/heatherbooker/vue-sticky-scroll/master/stickyScroll.js'></script>
 ```
+
+### usage instructions  
 
 Add `v-sticky-scroll` as an attribute on the element you wish to always scroll to the bottom of:
 
