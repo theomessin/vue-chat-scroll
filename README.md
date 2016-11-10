@@ -6,6 +6,8 @@ vue-sticky-scroll keeps an eye on your element and whenever content is added ins
 
 [view live demo on jsfiddle](https://jsfiddle.net/heatherbooker/13uf74vh/)
 
+__IMPORTANT: vue-sticky-scroll was developed for Vue 1.x, not 2.0. Please see [this issue](https://github.com/heatherbooker/vue-sticky-scroll/issues/2) for tips on fixing any problems you might have if trying to use it with Vue 2.0 until it is fixed. Thanks!__  
+
 ### install / include
 
 NPM:
