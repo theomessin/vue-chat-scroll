@@ -8,21 +8,21 @@
   }
 
   var vueStickyScroll = Vue.directive('sticky-scroll', {
-    bind: function() {
+    bind: function(el) {
 
       //use browser MutationObserver object
       var observer = new MutationObserver(scrollToBottom);
       //looking for new children that will change the height
       var config = { childList: true };
-      observer.observe(this.el, config);
+      observer.observe(el, config);
 
       //need reference to this, otherwise 'this'=MutationObserver
       var me = this;
 
       function animateScroll(duration) {
 
-        var start = me.el.scrollTop;
-        var end = me.el.scrollHeight;
+        var start = el.scrollTop;
+        var end = el.scrollHeight;
         var change = end - start;
         var increment = 20;
 
@@ -40,7 +40,7 @@
 
           elapsedTime += increment;
           var position = easeInOut(elapsedTime, start, change, duration);
-          me.el.scrollTop = position;
+          el.scrollTop = position;
 
           if (elapsedTime < duration) {
             setTimeout(function() {
@@ -58,7 +58,7 @@
           animateScroll(duration);
         } else {
           //default is jump to bottom
-          me.el.scrollTop = me.el.scrollHeight;
+          el.scrollTop = el.scrollHeight;
         }
       }
     }
