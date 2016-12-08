@@ -7,7 +7,7 @@
     // no worries, in browser enviro Vue should already be global
   }
 
-  var vueStickyScroll = Vue.directive('sticky-scroll', {
+  var vueStickyScroll = Vue.directive('sticky-bottom-scroll', {
     bind: function(el) {
 
       //use browser MutationObserver object

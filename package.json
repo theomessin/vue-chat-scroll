@@ -1,5 +1,5 @@
 {
-  "name": "vue-sticky-scroll",
+  "name": "vue-sticky-bottom-scroll",
   "version": "0.1.0",
   "description": "a vue.js directive that keeps an element scrolled to the bottom as new content is added",
   "main": "stickyScroll.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/theomessin/vue-sticky-scroll.git"
+    "url": "git+https://github.com/theomessin/vue-sticky-bottom-scroll.git"
   },
   "keywords": [
     "vue",
@@ -19,7 +19,7 @@
   "author": "Heather Booker",
   "license": "WTFPL",
   "bugs": {
-    "url": "https://github.com/heatherbooker/vue-sticky-scroll/issues"
+    "url": "https://github.com/theomessin/vue-sticky-bottom-scroll/issues"
   },
-  "homepage": "https://github.com/heatherbooker/vue-sticky-scroll#readme"
+  "homepage": "https://github.com/theomessin/vue-sticky-bottom-scroll#readme"
 }
