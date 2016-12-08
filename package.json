@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/heatherbooker/vue-sticky-scroll.git"
+    "url": "git+https://github.com/theomessin/vue-sticky-scroll.git"
   },
   "keywords": [
     "vue",
