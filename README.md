@@ -30,7 +30,7 @@ Include it in your main html file:
 
 ### usage instructions  
 
-Add `v-sticky-scroll` as an attribute on the element you wish to always scroll to the bottom of:
+Add `v-sticky-bottom-scroll` as an attribute on the element you wish to always scroll to the bottom of:
 
 ```html
 <div class='i-wish-this-would-scroll' v-sticky-scroll></div>
