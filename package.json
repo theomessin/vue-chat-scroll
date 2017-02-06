@@ -21,7 +21,10 @@
     "vue": "^2.1.10"
   },
   "bugs": {
-      "url": "https://github.com/theomessin/vue-chat-scroll/issues"
+    "url": "https://github.com/theomessin/vue-chat-scroll/issues"
   },
-  "homepage": "https://github.com/theomessin/vue-chat-scroll#readme"
+  "homepage": "https://github.com/theomessin/vue-chat-scroll#readme",
+  "devDependencies": {
+    "webpack": "^2.2.1"
+  }
 }
