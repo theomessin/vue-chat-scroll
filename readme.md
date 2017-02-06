@@ -2,7 +2,7 @@
 
 A plugin Vue.js 2 that scrolls to the bottom of an element when new content is added within said element.
 
-[Live Demo](https://theomessin.github.io/vue-chat-scroll/example.html)
+[Live Demo](https://theomessin.github.io/vue-chat-scroll/example)
 
 ## Installation
 
@@ -29,7 +29,7 @@ There's nothing you need to do in JavaScript except for installation. To use the
 
 ``` html
 <ul class="messages" v-chat-scroll>
-  <li class="message" v-for=n in messages">{{ n }}</li>
+  <li class="message" v-for="n in messages">{{ n }}</li>
 </ul>
 ```
 
