@@ -1,6 +1,6 @@
 # vue-chat-scroll
 
-A plugin Vue.js 2 that scrolls to the bottom of an element when new content is added within said element.
+A plugin for Vue.js 2 that scrolls to the bottom of an element when new content is added within said element.
 
 [Live Demo](https://theomessin.github.io/vue-chat-scroll/example)
 
