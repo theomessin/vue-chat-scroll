@@ -8,13 +8,13 @@
 const scrollToBottom = el => {el.scrollTop = el.scrollHeight;}
 
 const vChatScroll = {
-  bind: (el, binding) => {
-    (new MutationObserver(e => {
-      if (e[e.length - 1].addedNodes.length != 1) return;
-      scrollToBottom(el);
-    })).observe(el, {childList: true});
-  },
-  inserted: scrollToBottom
+    bind: (el, binding) => {
+        (new MutationObserver(e => {
+            if (e[e.length - 1].addedNodes.length != 1) return;
+            scrollToBottom(el);
+        })).observe(el, {childList: true});
+    },
+    inserted: scrollToBottom
 };
 
 export default vChatScroll;

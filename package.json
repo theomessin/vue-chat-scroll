@@ -1,12 +1,21 @@
 {
   "name": "vue-chat-scroll",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Automatic, yet conditional, scroll-to-bottom directive for Vue.js 2.0",
-  "main": "index.js",
+  "main": "src/vue-chat-scroll.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack --progress --hide-modules",
+    "watch": "cross-env NODE_ENV=development webpack --watch --progress --hide-modules",
+    "production": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/theomessin/vue-chat-scroll.git"
   },
+  "bugs": {
+    "url": "https://github.com/theomessin/vue-chat-scroll/issues"
+  },
+  "homepage": "https://github.com/theomessin/vue-chat-scroll#readme",
   "keywords": [
     "vue",
     "vue-directive",
@@ -20,11 +29,9 @@
   "dependencies": {
     "vue": "^2.1.10"
   },
-  "bugs": {
-    "url": "https://github.com/theomessin/vue-chat-scroll/issues"
-  },
-  "homepage": "https://github.com/theomessin/vue-chat-scroll#readme",
   "devDependencies": {
-    "webpack": "^2.2.1"
+    "laravel-mix": "^0.6.3",
+    "lodash": "^4.17.4",
+    "vue": "^2.1.10"
   }
 }
