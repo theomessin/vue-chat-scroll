@@ -14,7 +14,8 @@
                 message: "",
                 messages: [
                     {from: "theomessin", message: "This example demonstrates what the vue-chat-scroll plugin does."},
-                    {from: "theomessin", message: "When the v-chat-scroll directive is applied to an element"},
+                    {from: "theomessin", message: "When the v-chat-scroll directive is 
+applied to an element,"},
                     {from: "theomessin", message: "it will be automatically monitored by the plugin."},
                     {from: "theomessin", message: "When a new child is added, the plugin will scroll to the bottom of the element."},
                     {from: "theomessin", message: "Why not try it yourself? Simply type a message below and press enter to send!"}
@@ -24,7 +25,7 @@
         methods: {
             send: function () {
                 if (this.message == "") return;
-                this.messages.push({from: "You", message: this.message});
+                this.messages.push({from: "you", message: this.message});
                 this.message = "";
             }
         }
