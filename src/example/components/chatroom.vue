@@ -1,9 +1,14 @@
 <template>
     <div class="room">
-        <ul class="messages" v-chat-scroll>
+        <ul class="messages" v-chat-scroll="config">
             <li class="message" v-for="n in messages"><span><b>{{ n.from }}:</b> {{ n.message }}</span></li>
         </ul>
         <input v-model="message" @keydown.enter="send" type="text" class="send-message" placeholder="Type a message...">
+        <br>
+        <label>
+            <input v-model="config.always" type="checkbox">
+            Always scroll to bottom
+        </label>
     </div>
 </template>
 
@@ -18,7 +23,10 @@
                     {from: "theomessin", message: "it will be automatically monitored by the plugin."},
                     {from: "theomessin", message: "When a new child is added, the plugin will scroll to the bottom of the element."},
                     {from: "theomessin", message: "Why not try it yourself? Simply type a message below and press enter to send!"}
-                ]
+                ],
+                config: {
+                    always: true
+                }
             };
         },
         methods: {

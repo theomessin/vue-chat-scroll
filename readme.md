@@ -16,7 +16,7 @@ A plugin for Vue.js 2 that scrolls to the bottom of an element when new content 
 
   // ES5
   var Vue = require('vue')
-  Vue.use(require('vue-chat-scroll'))
+  Vue.use(require('vue-chat-scroll').default)
   ```
 
 - #### `<script>` Include
@@ -29,6 +29,16 @@ There's nothing you need to do in JavaScript except for installation. To use the
 
 ``` html
 <ul class="messages" v-chat-scroll>
+  <li class="message" v-for="n in messages">{{ n }}</li>
+</ul>
+```
+
+#### Prevent scroll down when user has scrolled up
+
+Alternatively, you can pass a config value to the directive:
+
+``` html
+<ul class="messages" v-chat-scroll="{always: false}">
   <li class="message" v-for="n in messages">{{ n }}</li>
 </ul>
 ```

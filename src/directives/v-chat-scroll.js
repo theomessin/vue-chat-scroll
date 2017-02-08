@@ -6,11 +6,22 @@
  */
 
 const scrollToBottom = el => {el.scrollTop = el.scrollHeight;}
-
 const vChatScroll = {
     bind: (el, binding) => {
+        let timeout;
+        let scrolled = false;
+
+        el.addEventListener('scroll', e => {
+            if (timeout) window.clearTimeout(timeout);
+            timeout = window.setTimeout(() => {
+                scrolled = el.scrollTop + el.clientHeight + 1 < el.scrollHeight;
+            }, 200);
+        });
+
         (new MutationObserver(e => {
-            if (e[e.length - 1].addedNodes.length != 1) return;
+            let config = binding.value || {};
+            let pause = config.always === false && scrolled;
+            if (pause || e[e.length - 1].addedNodes.length != 1) return;
             scrollToBottom(el);
         })).observe(el, {childList: true});
     },
