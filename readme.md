@@ -34,6 +34,16 @@ There's nothing you need to do in JavaScript except for installation. To use the
 </ul>
 ```
 
+#### Prevent scroll down when user has scrolled up
+
+Alternatively, you can pass a config value to the directive:
+
+``` html
+<ul class="messages" v-chat-scroll="{always: false}">
+  <li class="message" v-for="n in messages">{{ n }}</li>
+</ul>
+```
+
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
