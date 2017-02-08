@@ -1,6 +1,6 @@
 {
   "name": "vue-chat-scroll",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Automatic, yet conditional, scroll-to-bottom directive for Vue.js 2.0",
   "main": "src/vue-chat-scroll.js",
   "scripts": {
