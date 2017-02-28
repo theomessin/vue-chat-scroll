@@ -8,7 +8,7 @@
 import vChatScroll from './directives/v-chat-scroll.js';
 
 var VueChatScroll = {
-    install(Vue, options) {
+    install: function (Vue, options) {
         Vue.directive('chat-scroll', vChatScroll)
     }
 };
