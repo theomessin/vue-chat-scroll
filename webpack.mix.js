@@ -13,5 +13,4 @@ let mix = require('laravel-mix');
 
 mix.js('src/vue-chat-scroll.js', './')
    .js('src/example/main.js', './example/')
-   .sourceMaps()
    .setPublicPath('dist/');

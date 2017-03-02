@@ -5,25 +5,25 @@
  * @file v-chat-scroll  directive definition
  */
 
-const scrollToBottom = function(el) {
+const scrollToBottom = el => {
     el.scrollTop = el.scrollHeight;
 };
 
 const vChatScroll = {
-    bind: function(el, binding) {
-        var timeout;
-        var scrolled = false;
+    bind: (el, binding) => {
+        let timeout;
+        let scrolled = false;
 
-        el.addEventListener('scroll', function(e) {
+        el.addEventListener('scroll', e => {
             if (timeout) window.clearTimeout(timeout);
             timeout = window.setTimeout(function() {
                 scrolled = el.scrollTop + el.clientHeight + 1 < el.scrollHeight;
             }, 200);
         });
 
-        (new MutationObserver(function(e) {
-            var config = binding.value || {};
-            var pause = config.always === false && scrolled;
+        (new MutationObserver(e => {
+            let config = binding.value || {};
+            let pause = config.always === false && scrolled;
             if (pause || e[e.length - 1].addedNodes.length != 1) return;
             scrollToBottom(el);
         })).observe(el, {childList: true});
