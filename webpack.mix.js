@@ -14,3 +14,9 @@ let mix = require('laravel-mix');
 mix.js('src/vue-chat-scroll.js', './')
    .js('src/example/main.js', './example/')
    .setPublicPath('dist/');
+
+mix.webpackConfig({
+  output: {
+    libraryTarget: 'umd'
+  }
+})
