@@ -1,6 +1,6 @@
 {
   "name": "vue-chat-scroll",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Automatic, yet conditional, scroll-to-bottom directive for Vue.js 2.0",
   "main": "dist/vue-chat-scroll.js",
   "scripts": {
@@ -26,9 +26,6 @@
   ],
   "author": "Theodore Messinezis",
   "license": "MIT",
-  "dependencies": {
-    "vue": "^2.1.10"
-  },
   "devDependencies": {
     "laravel-mix": "^0.6.3",
     "lodash": "^4.17.4",
