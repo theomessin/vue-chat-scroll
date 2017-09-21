@@ -32,7 +32,7 @@ var vChatScroll = {
             var pause = config.always === false && scrolled;
             if (pause || e[e.length - 1].addedNodes.length != 1) return;
             scrollToBottom(el);
-        }).observe(el, { childList: true });
+        }).observe(el, { childList: true, subtree: true });
     },
     inserted: scrollToBottom
 };
