@@ -20,14 +20,12 @@ var vChatScroll = {
         var scrolled = false;
 
         el.addEventListener('scroll', function (e) {
-            console.log('Scrolled');
             scrolled = el.scrollTop + el.clientHeight + 1 < el.scrollHeight;
         });
 
         new MutationObserver(function (e) {
             var config = binding.value || {};
             var pause = config.always === false && scrolled;
-            console.log('Pause?', config.always === false, scrolled, pause);
             if (pause || e[e.length - 1].addedNodes.length != 1) return;
             scrollToBottom(el);
         }).observe(el, { childList: true });
