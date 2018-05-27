@@ -14,7 +14,7 @@ const vChatScroll = {
         let scrolled = false;
 
         el.addEventListener('scroll', e => {
-            scrolled = el.scrollTop + el.clientHeight + 1 < el.scrollHeight - 5;
+            scrolled = el.scrollTop + el.clientHeight + 1 < el.scrollHeight;
         });
 
         (new MutationObserver(e => {
@@ -22,7 +22,7 @@ const vChatScroll = {
             let pause = config.always === false && scrolled;
             if (pause || e[e.length - 1].addedNodes.length != 1) return;
             scrollToBottom(el);
-        })).observe(el, {attributes: true});
+        })).observe(el, {childList: true});
     },
     inserted: scrollToBottom
 };
