@@ -15,6 +15,7 @@ const vChatScroll = {
         let scrolled = false;
 
         el.addEventListener('scroll', e => {
+            if (!scrolled) scrolled = el.scrollTop + el.clientHeight + 1 < el.scrollHeight;
             if (timeout) window.clearTimeout(timeout);
             timeout = window.setTimeout(function() {
                 scrolled = el.scrollTop + el.clientHeight + 1 < el.scrollHeight;
