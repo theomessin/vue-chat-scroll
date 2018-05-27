@@ -15,20 +15,13 @@ var scrollToBottom = function scrollToBottom(el) {
     el.scrollTop = el.scrollHeight;
 };
 
-var isScrolled = function isScrolled(el) {
-    return el.scrollTop + el.clientHeight + 10 < el.scrollHeight;
-};
-
 var vChatScroll = {
     bind: function bind(el, binding) {
         var timeout = void 0;
         var scrolled = false;
 
         el.addEventListener('scroll', function (e) {
-            if (timeout) window.clearTimeout(timeout);else scrolled = isScrolled(el);
-            timeout = window.setTimeout(function () {
-                scrolled = isScrolled(el);
-            }, 1);
+            scrolled = el.scrollTop + el.clientHeight + 1 < el.scrollHeight - 5;
         });
 
         new MutationObserver(function (e) {
@@ -36,7 +29,7 @@ var vChatScroll = {
             var pause = config.always === false && scrolled;
             if (pause || e[e.length - 1].addedNodes.length != 1) return;
             scrollToBottom(el);
-        }).observe(el, { childList: true, subtree: true });
+        }).observe(el, { attributes: true });
     },
     inserted: scrollToBottom
 };
