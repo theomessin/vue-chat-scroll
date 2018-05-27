@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>vue-chat-scroll</title>
+
+    <!-- Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.0/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- Vue-Chat-Scroll-->
+    <script src="https://rawgit.com/theomessin/vue-chat-scroll/master/dist/vue-chat-scroll.js"></script>
+
+    <style>
+      li {
+        background-color: #ffffff;
+        border: 1px solid black;
+        list-style: none;
+        padding: .75rem;
+        margin: 10px 0 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex h-screen flex-col justify-center items-center h-screen w-screen" id="app">
+      <ul v-chat-scroll class="w-1/2 bg-grey-lightest border border-grey m-0 px-8 py-4 overflow-x-auto"  style="height: 50vh;">
+        <li v-for="message in messages">{{ message }}</li>
+      </ul>
+      <input v-model="message" class="mt-2 w-1/2 px-3 py-2 border border-grey" type="text" placeholder="Type your message" @keydown.enter="send"/>
+    </div>
+
+    <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: "",
+        messages: []
+      },
+      mounted: function() {
+        const self = this
+        for (let i = 0 ; i < 13 ; i++)
+        axios.get('http://faker.hook.io/?property=lorem.sentence').then(function (response) {
+          self.messages.push(response.data)
+        })
+      },
+      methods: {
+        send: function() {
+          this.messages.push(this.message)
+          this.message = ""
+        }
+      }
+    })
+    </script>
+  </body>
+</html>

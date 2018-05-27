@@ -1,9 +1,9 @@
 /**
- * @name VueJS vChatScroll (vue-chat-scroll)
- * @description Monitors an element and scrolls to the bottom if a new child is added
- * @author Theodore Messinezis <theo@theomessin.com>
- * @file vue-chat-scroll plugin definition
- */
+* @name VueJS vChatScroll (vue-chat-scroll)
+* @description Monitors an element and scrolls to the bottom if a new child is added
+* @author Theodore Messinezis <theo@theomessin.com>
+* @file vue-chat-scroll plugin definition
+*/
 
 import vChatScroll from './directives/v-chat-scroll.js';
 

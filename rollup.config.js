@@ -5,7 +5,7 @@ import commonjs from 'rollup-plugin-commonjs'
 export default {
   entry: './src/vue-chat-scroll.js',
   dest: './dist/vue-chat-scroll.js',
-
+  
   plugins: [
     resolve(),
     commonjs(),

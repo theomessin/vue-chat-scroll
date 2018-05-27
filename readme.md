@@ -34,12 +34,12 @@ There's nothing you need to do in JavaScript except for installation. To use the
 </ul>
 ```
 
-#### Prevent scroll down when user has scrolled up
+#### Prevent scroll down when user has scrolled up & smooth scrolling
 
 Alternatively, you can pass a config value to the directive:
 
 ``` html
-<ul class="messages" v-chat-scroll="{always: false}">
+<ul class="messages" v-chat-scroll="{always: false, smooth: true}">
   <li class="message" v-for="n in messages">{{ n }}</li>
 </ul>
 ```
