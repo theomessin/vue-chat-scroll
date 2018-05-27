@@ -41,9 +41,9 @@
       },
       mounted: function() {
         const self = this
-        for (let i = 0 ; i < 13 ; i++)
-        axios.get('http://faker.hook.io/?property=lorem.sentence').then(function (response) {
-          self.messages.push(response.data)
+        for (let i = 0 ; i < 15 ; i++)
+        axios.get('https://baconipsum.com/api/?type=meat-and-filler&sentences=1&start-with-lorem=1').then(function (response) {
+          response.data.forEach(e => self.messages.push(e))
         })
       },
       methods: {
