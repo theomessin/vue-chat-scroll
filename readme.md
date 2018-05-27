@@ -5,24 +5,24 @@ A plugin for Vue.js 2 that scrolls to the bottom of an element when new content 
 ## Installation
 
 - #### NPM / Yarn
-  Run `npm install --save vue-chat-scroll`, or `yarn add vue-chat-scroll`
+Run `npm install --save vue-chat-scroll`, or `yarn add vue-chat-scroll`
 
 - #### With Modules
 
-  ``` js
-  // ES6
-  import Vue from 'vue'
-  import VueChatScroll from 'vue-chat-scroll'
-  Vue.use(VueChatScroll)
+``` js
+// ES6
+import Vue from 'vue'
+import VueChatScroll from 'vue-chat-scroll'
+Vue.use(VueChatScroll)
 
-  // ES5
-  var Vue = require('vue')
-  Vue.use(require('vue-chat-scroll'))
-  ```
+// ES5
+var Vue = require('vue')
+Vue.use(require('vue-chat-scroll'))
+```
 
 - #### `<script>` Include
 
-  Just include `./dist/vue-chat-scroll.js` after Vue itself.
+Just include `./dist/vue-chat-scroll.js` after Vue itself.
 
 ## Usage
 

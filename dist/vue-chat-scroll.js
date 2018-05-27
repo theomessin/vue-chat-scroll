@@ -12,29 +12,29 @@
  */
 
 var scrollToBottom = function scrollToBottom(el) {
-    el.scrollTop = el.scrollHeight;
+  el.scrollTop = el.scrollHeight;
 };
 
 var vChatScroll = {
-    bind: function bind(el, binding) {
-        var timeout = void 0;
-        var scrolled = false;
+  bind: function bind(el, binding) {
+    var timeout = void 0;
+    var scrolled = false;
 
-        el.addEventListener('scroll', function (e) {
-            if (timeout) window.clearTimeout(timeout);
-            timeout = window.setTimeout(function () {
-                scrolled = el.scrollTop + el.clientHeight + 1 < el.scrollHeight;
-            }, 200);
-        });
+    el.addEventListener('scroll', function (e) {
+      if (timeout) window.clearTimeout(timeout);
+      timeout = window.setTimeout(function () {
+        scrolled = el.scrollTop + el.clientHeight + 1 < el.scrollHeight;
+      }, 200);
+    });
 
-        new MutationObserver(function (e) {
-            var config = binding.value || {};
-            var pause = config.always === false && scrolled;
-            if (pause || e[e.length - 1].addedNodes.length != 1) return;
-            scrollToBottom(el);
-        }).observe(el, { childList: true, subtree: true });
-    },
-    inserted: scrollToBottom
+    new MutationObserver(function (e) {
+      var config = binding.value || {};
+      var pause = config.always === false && scrolled;
+      if (pause || e[e.length - 1].addedNodes.length != 1) return;
+      scrollToBottom(el);
+    }).observe(el, { childList: true, subtree: true });
+  },
+  inserted: scrollToBottom
 };
 
 /**
@@ -45,13 +45,13 @@ var vChatScroll = {
  */
 
 var VueChatScroll = {
-    install: function install(Vue, options) {
-        Vue.directive('chat-scroll', vChatScroll);
-    }
+  install: function install(Vue, options) {
+    Vue.directive('chat-scroll', vChatScroll);
+  }
 };
 
 if (typeof window !== 'undefined' && window.Vue) {
-    window.Vue.use(VueChatScroll);
+  window.Vue.use(VueChatScroll);
 }
 
 return VueChatScroll;
