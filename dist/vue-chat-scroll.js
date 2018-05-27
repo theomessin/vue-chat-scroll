@@ -15,16 +15,20 @@ var scrollToBottom = function scrollToBottom(el) {
     el.scrollTop = el.scrollHeight;
 };
 
+var isScrolled = function isScrolled(el) {
+    return el.scrollTop + el.clientHeight + 10 < el.scrollHeight;
+};
+
 var vChatScroll = {
     bind: function bind(el, binding) {
         var timeout = void 0;
         var scrolled = false;
 
         el.addEventListener('scroll', function (e) {
-            if (timeout) window.clearTimeout(timeout);
+            if (timeout) window.clearTimeout(timeout);else scrolled = isScrolled(el);
             timeout = window.setTimeout(function () {
-                scrolled = el.scrollTop + el.clientHeight + 1 < el.scrollHeight;
-            }, 200);
+                scrolled = isScrolled(el);
+            }, 1);
         });
 
         new MutationObserver(function (e) {
