@@ -15,13 +15,16 @@ const scrollToBottom = (el, smooth) => {
 const vChatScroll = {
   bind: (el, binding) => {
     let scrolled = false;
+    const config = binding.value || {};
+    if (typeof config.scroll === 'string') {
+      el = el.querySelector(config.scroll) || el;
+    }
 
     el.addEventListener('scroll', e => {
       scrolled = el.scrollTop + el.clientHeight + 1 < el.scrollHeight;
     });
 
     (new MutationObserver(e => {
-      let config = binding.value || {};
       let pause = config.always === false && scrolled;
       if (pause || e[e.length - 1].addedNodes.length != 1) return;
       scrollToBottom(el, config.smooth);
