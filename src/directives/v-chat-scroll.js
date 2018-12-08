@@ -6,10 +6,14 @@
 */
 
 const scrollToBottom = (el, smooth) => {
-  el.scroll({
-    top: el.scrollHeight,
-    behavior: smooth ? 'smooth' : 'instant'
-  });
+  if (typeof el.scroll === "function") {
+    el.scroll({
+      top: el.scrollHeight,
+      behavior: smooth ? 'smooth' : 'instant'
+    });
+  } else {
+    el.scrollTop = el.scrollHeight;
+  }
 };
 
 const vChatScroll = {
@@ -25,7 +29,7 @@ const vChatScroll = {
       let pause = config.always === false && scrolled;
       if (pause || e[e.length - 1].addedNodes.length != 1) return;
       scrollToBottom(el, config.smooth);
-    })).observe(el, {childList: true, subtree: true});
+    })).observe(el, { childList: true, subtree: true });
   },
   inserted: scrollToBottom
 };
