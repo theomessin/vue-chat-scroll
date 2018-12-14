@@ -27,7 +27,11 @@ const vChatScroll = {
     (new MutationObserver(e => {
       let config = binding.value || {};
       let pause = config.always === false && scrolled;
-      if (pause || e[e.length - 1].addedNodes.length != 1) return;
+      if(config.scrollonremoved){
+        if (pause || e[e.length - 1].addedNodes.length != 1 && e[e.length - 1].removedNodes.length != 1) return;
+      }else{
+        if (pause || e[e.length - 1].addedNodes.length != 1) return;
+      }
       scrollToBottom(el, config.smooth);
     })).observe(el, { childList: true, subtree: true });
   },

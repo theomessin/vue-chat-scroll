@@ -44,6 +44,17 @@ Alternatively, you can pass a config value to the directive:
 </ul>
 ```
 
+#### Scroll with dissapearing elements in chat window (see [#30](https://github.com/theomessin/vue-chat-scroll/issues/30))
+
+If you have a "loading" animation that disappears when you receive a message from an external source, use the `scrollonremoved` option to ensure the scroll will happen after the element has been removed 
+
+``` html
+<ul class="messages" v-chat-scroll="{always: false, smooth: true, scrollonremoved:true}">
+  <li class="message" v-for="n in messages">{{ n }}</li>
+  <li v-if="loading">loading...</li>
+</ul>
+```
+
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
