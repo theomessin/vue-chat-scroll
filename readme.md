@@ -51,7 +51,7 @@ If you have a "loading" animation that disappears when you receive a message fro
 ``` html
 <ul class="messages" v-chat-scroll="{always: false, smooth: true, scrollonremoved:true}">
   <li class="message" v-for="n in messages">{{ n }}</li>
-  <li v-if="loading">loading...</li>
+  <li v-if="loading">&bull;&bull;&bull;</li>
 </ul>
 ```
 

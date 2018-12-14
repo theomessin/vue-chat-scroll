@@ -33,11 +33,11 @@ var vChatScroll = {
     new MutationObserver(function (e) {
       var config = binding.value || {};
       var pause = config.always === false && scrolled;
-      if(config.scrollonremoved){
+      if (config.scrollonremoved) {
         if (pause || e[e.length - 1].addedNodes.length != 1 && e[e.length - 1].removedNodes.length != 1) return;
-      }else{
+      } else {
         if (pause || e[e.length - 1].addedNodes.length != 1) return;
-      }         
+      }
       scrollToBottom(el, config.smooth);
     }).observe(el, { childList: true, subtree: true });
   },
