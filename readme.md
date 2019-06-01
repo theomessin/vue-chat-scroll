@@ -1,28 +1,30 @@
 # vue-chat-scroll
+[![](https://flat.badgen.net/npm/v/vue-chat-scroll?color=red)](https://www.npmjs.com/package/vue-chat-scroll) 
+[![](https://flat.badgen.net/jsdelivr/hits/npm/vue-chat-scroll)](https://www.jsdelivr.com/package/npm/vue-chat-scroll) [![](https://flat.badgen.net/bundlephobia/minzip/vue-chat-scroll?color=orange)](https://bundlephobia.com/result?p=vue-chat-scroll) [![](https://flat.badgen.net/npm/license/vue-chat-scroll)](https://github.com/theomessin/vue-chat-scroll/blob/master/license.md)
 
-A plugin for Vue.js 2 that scrolls to the bottom of an element when new content is added within said element. [Check out our lovely demo](https://theomessin.github.io/vue-chat-scroll/).
+A plugin for Vue.js 2 that scrolls to the bottom of an element when new content is added within said element. [See demo](https://theomessin.github.io/vue-chat-scroll/).
 
 ## Installation
 
-- NPM / Yarn
-Run `npm install --save vue-chat-scroll`, or `yarn add vue-chat-scroll`
+### NPM (recommended)
 
-- With Modules
-
-``` js
-// ES6
-import Vue from 'vue'
-import VueChatScroll from 'vue-chat-scroll'
-Vue.use(VueChatScroll)
-
-// ES5
-var Vue = require('vue')
-Vue.use(require('vue-chat-scroll'))
+```
+npm install --save vue-chat-scroll
 ```
 
-- `<script>` Include
+``` js
+import Vue from 'vue'
 
-Just include `./dist/vue-chat-scroll.js` after Vue itself.
+import VueChatScroll from 'vue-chat-scroll'
+Vue.use(VueChatScroll)
+```
+
+### Simple Script Tag
+
+Just include `dist/vue-chat-scroll.js` _after including Vue_.
+```html
+<script src="https://cdn.jsdelivr.net/npm/vue-chat-scroll/dist/vue-chat-scroll.min.js"></script>
+```
 
 ## Usage
 
@@ -54,7 +56,3 @@ If you have a "loading" animation that disappears when you receive a message fro
   <li v-if="loading">&bull;&bull;&bull;</li>
 </ul>
 ```
-
-## License
-
-[MIT](http://opensource.org/licenses/MIT)
