@@ -35,7 +35,10 @@ const vChatScroll = {
       scrollToBottom(el, config.smooth);
     })).observe(el, { childList: true, subtree: true });
   },
-  inserted: scrollToBottom
+  inserted: (el, binding) => {
+    const config = binding.value || {};
+    scrollToBottom(el, config.smooth);
+  },
 };
 
 export default vChatScroll;
