@@ -27,12 +27,21 @@ const vChatScroll = {
     (new MutationObserver(e => {
       let config = binding.value || {};
       let pause = config.always === false && scrolled;
+      const addedNodes = e[e.length - 1].addedNodes.length;
+      const removedNodes = e[e.length - 1].removedNodes.length;
+
       if (config.scrollonremoved) {
-        if (pause || e[e.length - 1].addedNodes.length != 1 && e[e.length - 1].removedNodes.length != 1) return;
+        if (pause || addedNodes != 1 && removedNodes != 1) return;
       } else {
-        if (pause || e[e.length - 1].addedNodes.length != 1) return;
+        if (pause || addedNodes != 1) return;
       }
-      scrollToBottom(el, config.smooth);
+
+      let smooth = config.smooth;
+      const loadingRemoved = !addedNodes && removedNodes === 1;
+      if (loadingRemoved && config.scrollonremoved && 'smoothonremoved' in config) {
+        smooth = config.smoothonremoved;
+      }
+      scrollToBottom(el, smooth);
     })).observe(el, { childList: true, subtree: true });
   },
   inserted: (el, binding) => {
