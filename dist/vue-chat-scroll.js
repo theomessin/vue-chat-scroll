@@ -33,15 +33,27 @@ var vChatScroll = {
     new MutationObserver(function (e) {
       var config = binding.value || {};
       var pause = config.always === false && scrolled;
+      var addedNodes = e[e.length - 1].addedNodes.length;
+      var removedNodes = e[e.length - 1].removedNodes.length;
+
       if (config.scrollonremoved) {
-        if (pause || e[e.length - 1].addedNodes.length != 1 && e[e.length - 1].removedNodes.length != 1) return;
+        if (pause || addedNodes != 1 && removedNodes != 1) return;
       } else {
-        if (pause || e[e.length - 1].addedNodes.length != 1) return;
+        if (pause || addedNodes != 1) return;
       }
-      scrollToBottom(el, config.smooth);
+
+      var smooth = config.smooth;
+      var loadingRemoved = !addedNodes && removedNodes === 1;
+      if (loadingRemoved && config.scrollonremoved && 'smoothonremoved' in config) {
+        smooth = config.smoothonremoved;
+      }
+      scrollToBottom(el, smooth);
     }).observe(el, { childList: true, subtree: true });
   },
-  inserted: scrollToBottom
+  inserted: function inserted(el, binding) {
+    var config = binding.value || {};
+    scrollToBottom(el, config.smooth);
+  }
 };
 
 /**
