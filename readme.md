@@ -56,3 +56,12 @@ If you have a "loading" animation that disappears when you receive a message fro
   <li v-if="loading">&bull;&bull;&bull;</li>
 </ul>
 ```
+
+If you want to avoid having smooth scroll in this situation (so it instantly scrolls to bottom after loading), but keep it when new messages come, use the `smoothonremoved` set to `false`, while being able to keep `smooth` set to `true` for later messages.
+``` html
+<ul class="messages" v-chat-scroll="{always: false, smooth: true, scrollonremoved:true, smoothonremoved: false}">
+  <li class="message" v-for="n in messages">{{ n }}</li>
+  <li v-if="loading">&bull;&bull;&bull;</li>
+</ul>
+```
+This option only applies if `scrollonremoved` is set to `true`. When not defined behavior defaults to `smooth` property.
