@@ -5,14 +5,14 @@
 }(this, (function () { 'use strict';
 
 /**
-* @name VueJS vChatScroll (vue-chat-scroll)
-* @description Monitors an element and scrolls to the bottom if a new child is added
-* @author Theodore Messinezis <theo@theomessin.com>
-* @file v-chat-scroll  directive definition
-*/
+ * @name VueJS vChatScroll (vue-chat-scroll)
+ * @description Monitors an element and scrolls to the bottom if a new child is added
+ * @author Theodore Messinezis <theo@theomessin.com>
+ * @file v-chat-scroll  directive definition
+ */
 
 var scrollToBottom = function scrollToBottom(el, smooth) {
-  if (typeof el.scroll === "function") {
+  if (typeof el.scroll === 'function') {
     el.scroll({
       top: el.scrollHeight,
       behavior: smooth ? 'smooth' : 'instant'
@@ -25,13 +25,17 @@ var scrollToBottom = function scrollToBottom(el, smooth) {
 var vChatScroll = {
   bind: function bind(el, binding) {
     var scrolled = false;
+    var config = binding.value || {};
 
     el.addEventListener('scroll', function (e) {
       scrolled = el.scrollTop + el.clientHeight + 1 < el.scrollHeight;
+      // Dispatch event when top of scrollbar is reached
+      if (el.scrollTop === 0 && scrolled && config.always === false) {
+        el.dispatchEvent(new Event('v-chat-scroll-top-reached'));
+      }
     });
 
     new MutationObserver(function (e) {
-      var config = binding.value || {};
       var pause = config.always === false && scrolled;
       var addedNodes = e[e.length - 1].addedNodes.length;
       var removedNodes = e[e.length - 1].removedNodes.length;
@@ -52,6 +56,7 @@ var vChatScroll = {
   },
   inserted: function inserted(el, binding) {
     var config = binding.value || {};
+
     scrollToBottom(el, config.smooth);
   }
 };
