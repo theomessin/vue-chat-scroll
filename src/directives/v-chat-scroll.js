@@ -46,7 +46,7 @@ const vChatScroll = {
   },
   inserted: (el, binding) => {
     const config = binding.value || {};
-    scrollToBottom(el, config.smooth);
+    scrollToBottom(el, config.notSmoothOnInit ? false : config.smooth);
   },
 };
 

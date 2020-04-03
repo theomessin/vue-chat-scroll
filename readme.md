@@ -46,6 +46,14 @@ Alternatively, you can pass a config value to the directive:
 </ul>
 ```
 
+#### Smooth scrolling for updates but not the first time the container comes in view
+
+``` html
+<ul class="messages" v-chat-scroll="{smooth: true, notSmoothOnInit: true}">
+  <li class="message" v-for="n in messages">{{ n }}</li>
+</ul>
+```
+
 #### Scroll with dissapearing elements in chat window (see [#30](https://github.com/theomessin/vue-chat-scroll/issues/30))
 
 If you have a "loading" animation that disappears when you receive a message from an external source, use the `scrollonremoved` option to ensure the scroll will happen after the element has been removed 
