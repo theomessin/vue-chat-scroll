@@ -16,14 +16,12 @@ const scrollToBottom = (el, smooth) => {
   }
 };
 
+let scrolled = false;
+const handleScroll = e => scrolled = el.scrollTop + el.clientHeight + 1 < el.scrollHeight;
+
 const vChatScroll = {
   bind: (el, binding) => {
-    let scrolled = false;
-
-    el.addEventListener('scroll', e => {
-      scrolled = el.scrollTop + el.clientHeight + 1 < el.scrollHeight;
-    });
-
+    el.addEventListener('scroll', handleScroll);
     (new MutationObserver(e => {
       let config = binding.value || {};
       let pause = config.always === false && scrolled;
@@ -48,6 +46,9 @@ const vChatScroll = {
     const config = binding.value || {};
     scrollToBottom(el, config.smooth);
   },
+  unbind: (el) => {
+    el.removeEventListener('scroll', handleScroll);
+  }
 };
 
 export default vChatScroll;
