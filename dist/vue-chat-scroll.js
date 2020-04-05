@@ -29,8 +29,8 @@ var vChatScroll = {
 
     el.addEventListener('scroll', function (e) {
       scrolled = el.scrollTop + el.clientHeight + 1 < el.scrollHeight;
-      // Dispatch event when top of scrollbar is reached and always is set to false
-      if (el.scrollTop === 0 && scrolled && config.always === false) {
+      // Dispatch event when top of scrollbar is reached
+      if (el.scrollTop === 0 && scrolled) {
         el.dispatchEvent(new Event("v-chat-scroll-top-reached"));
       }
     });
