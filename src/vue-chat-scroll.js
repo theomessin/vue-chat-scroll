@@ -5,16 +5,16 @@
 * @file vue-chat-scroll plugin definition
 */
 
-import vChatScroll from './directives/v-chat-scroll.js';
+import vChatScroll from "./directives/v-chat-scroll.js";
 
 var VueChatScroll = {
   install: (Vue, options) => {
-    Vue.directive('chat-scroll', vChatScroll)
+    Vue.directive("chat-scroll", vChatScroll)
   }
 };
 
 export default VueChatScroll;
 
-if (typeof window !== 'undefined' && window.Vue) {
+if (typeof window !== "undefined" && window.Vue) {
   window.Vue.use(VueChatScroll)
 }

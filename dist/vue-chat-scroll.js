@@ -12,10 +12,10 @@
  */
 
 var scrollToBottom = function scrollToBottom(el, smooth) {
-  if (typeof el.scroll === 'function') {
+  if (typeof el.scroll === "function") {
     el.scroll({
       top: el.scrollHeight,
-      behavior: smooth ? 'smooth' : 'instant'
+      behavior: smooth ? "smooth" : "instant"
     });
   } else {
     el.scrollTop = el.scrollHeight;
@@ -29,9 +29,9 @@ var vChatScroll = {
 
     el.addEventListener('scroll', function (e) {
       scrolled = el.scrollTop + el.clientHeight + 1 < el.scrollHeight;
-      // Dispatch event when top of scrollbar is reached
+      // Dispatch event when top of scrollbar is reached and always is set to false
       if (el.scrollTop === 0 && scrolled && config.always === false) {
-        el.dispatchEvent(new Event('v-chat-scroll-top-reached'));
+        el.dispatchEvent(new Event("v-chat-scroll-top-reached"));
       }
     });
 
@@ -48,7 +48,7 @@ var vChatScroll = {
 
       var smooth = config.smooth;
       var loadingRemoved = !addedNodes && removedNodes === 1;
-      if (loadingRemoved && config.scrollonremoved && 'smoothonremoved' in config) {
+      if (loadingRemoved && config.scrollonremoved && "smoothonremoved" in config) {
         smooth = config.smoothonremoved;
       }
       scrollToBottom(el, smooth);
@@ -70,11 +70,11 @@ var vChatScroll = {
 
 var VueChatScroll = {
   install: function install(Vue, options) {
-    Vue.directive('chat-scroll', vChatScroll);
+    Vue.directive("chat-scroll", vChatScroll);
   }
 };
 
-if (typeof window !== 'undefined' && window.Vue) {
+if (typeof window !== "undefined" && window.Vue) {
   window.Vue.use(VueChatScroll);
 }
 

@@ -6,10 +6,10 @@
  */
 
 const scrollToBottom = (el, smooth) => {
-  if (typeof el.scroll === 'function') {
+  if (typeof el.scroll === "function") {
     el.scroll({
       top: el.scrollHeight,
-      behavior: smooth ? 'smooth' : 'instant'
+      behavior: smooth ? "smooth" : "instant"
     });
   } else {
     el.scrollTop = el.scrollHeight;
@@ -25,7 +25,7 @@ const vChatScroll = {
       scrolled = el.scrollTop + el.clientHeight + 1 < el.scrollHeight;
       // Dispatch event when top of scrollbar is reached and always is set to false
       if (el.scrollTop === 0 && scrolled && config.always === false) {
-        el.dispatchEvent(new Event('v-chat-scroll-top-reached'));
+        el.dispatchEvent(new Event("v-chat-scroll-top-reached"));
       }
     });
 
@@ -42,11 +42,7 @@ const vChatScroll = {
 
       let smooth = config.smooth;
       const loadingRemoved = !addedNodes && removedNodes === 1;
-      if (
-        loadingRemoved &&
-        config.scrollonremoved &&
-        'smoothonremoved' in config
-      ) {
+      if (loadingRemoved && config.scrollonremoved && "smoothonremoved" in config) {
         smooth = config.smoothonremoved;
       }
       scrollToBottom(el, smooth);
