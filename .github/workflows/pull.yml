@@ -22,4 +22,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release --dry-run --skip-pr-check
+        run: npx semantic-release --dry-run --no-ci
