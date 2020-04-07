@@ -22,6 +22,9 @@ const vChatScroll = {
 
     el.addEventListener('scroll', e => {
       scrolled = el.scrollTop + el.clientHeight + 1 < el.scrollHeight;
+      if (scrolled && el.scrollTop === 0) {
+        el.dispatchEvent(new Event("v-chat-scroll-top-reached"));
+      }
     });
 
     (new MutationObserver(e => {
@@ -47,7 +50,7 @@ const vChatScroll = {
   },
   inserted: (el, binding) => {
     const config = binding.value || {};
-    scrollToBottom(el, config.smooth);
+    scrollToBottom(el, config.notSmoothOnInit ? false : config.smooth);
   },
 };
 
