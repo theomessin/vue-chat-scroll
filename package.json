@@ -1,0 +1,17 @@
+{
+  "name": "vue-chat-scroll",
+  "description": "Vue directive to keep things scrolled to the bottom",
+  "keywords": [
+    "vue",
+    "directive",
+    "chat",
+    "scroll",
+    "bottom"
+  ],
+  "license": "MIT",
+  "author": "Theodore Messinezis",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theomessin/vue-chat-scroll.git"
+  }
+}
