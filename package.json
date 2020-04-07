@@ -28,6 +28,10 @@
     "rollup": "^2.3.3",
     "rollup-plugin-uglify": "^6.0.4",
     "tslib": "^1.11.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "vue": "^2.0.0"
+  },
+  "peerDependencies": {
+    "vue": "^2.0.0"
   }
 }
