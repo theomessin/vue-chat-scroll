@@ -29,6 +29,7 @@ const vChatScroll = {
 
     (new MutationObserver(e => {
       let config = binding.value || {};
+      if (config.enabled === false) return;
       let pause = config.always === false && scrolled;
       const addedNodes = e[e.length - 1].addedNodes.length;
       const removedNodes = e[e.length - 1].removedNodes.length;

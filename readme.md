@@ -74,6 +74,20 @@ If you want to avoid having smooth scroll in this situation (so it instantly scr
 ```
 This option only applies if `scrollonremoved` is set to `true`. When not defined behavior defaults to `smooth` property.
 
+#### Disable vue-chat-scroll using configuration prop
+
+You may use the `enabled` configuration property to control `v-chat-scroll`.
+
+``` html
+<ul class="messages" :v-chat-scroll="{enabled: enabled}">
+  <li class="message" v-for="n in messages">{{ n }}</li>
+</ul>
+```
+```js
+data () => {
+  enabled: false,
+}
+
 ### Events
 
 - **v-chat-scroll-top-reached**
