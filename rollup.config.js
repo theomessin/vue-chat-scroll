@@ -1,20 +1,18 @@
-import babel from 'rollup-plugin-babel'
-import resolve from 'rollup-plugin-node-resolve'
-import commonjs from 'rollup-plugin-commonjs'
+// rollup.config.js
+import resolve from '@rollup/plugin-node-resolve';
+import babel from 'rollup-plugin-babel';
 
 export default {
-  entry: './src/vue-chat-scroll.js',
-  dest: './dist/vue-chat-scroll.js',
-  
+  input: './src/vue-chat-scroll.js',
+  output: {
+    file: './dist/vue-chat-scroll.js',
+    format: 'umd',
+    name: 'vue-chat-scroll'
+  },
   plugins: [
     resolve(),
-    commonjs(),
     babel({
-      exclude: 'node_modules/**',
-      presets: ['es2015-rollup']
+      exclude: 'node_modules/**' // only transpile our source code
     })
-  ],
-
-  format: 'umd',
-  moduleName: 'vue-chat-scroll'
-}
+  ]
+};
