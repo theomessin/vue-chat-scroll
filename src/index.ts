@@ -1,6 +1,7 @@
 import { DirectiveOptions, PluginObject } from 'vue';
 
 const directive: DirectiveOptions = {
+  inserted: () => console.log,
   bind: (el) => {
     const observer = new MutationObserver((e) => {
       const nodesWereAdded = e[e.length - 1].addedNodes.length === 1;
