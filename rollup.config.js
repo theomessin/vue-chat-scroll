@@ -1,3 +1,4 @@
+import { uglify } from 'rollup-plugin-uglify';
 import typescript from '@rollup/plugin-typescript';
 
 export default {
@@ -9,5 +10,6 @@ export default {
   },
   plugins: [
     typescript(),
+    uglify(),
   ],
 };
