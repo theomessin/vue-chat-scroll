@@ -73,3 +73,13 @@ If you want to avoid having smooth scroll in this situation (so it instantly scr
 </ul>
 ```
 This option only applies if `scrollonremoved` is set to `true`. When not defined behavior defaults to `smooth` property.
+
+### Events
+
+- **v-chat-scroll-top-reached**
+Will be triggered when the top of scrollbar is reached. If you are using this event for prepending items to the list then also make sure that the config option **always** is set to false.
+``` html
+<ul class="messages" v-chat-scroll="{always: false}" @v-chat-scroll-top-reached="customMethod">
+  <li class="message" v-for="n in messages">{{ n }}</li>
+</ul>
+```
