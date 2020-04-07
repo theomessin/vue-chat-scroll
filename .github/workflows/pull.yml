@@ -1,12 +1,13 @@
-name: Release
+name: pull
 on:
-  push:
+  pull_request:
     branches:
       - master
       - alpha
 jobs:
-  release:
-    name: Release
+
+  preview:
+    name: preview
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -17,8 +18,8 @@ jobs:
           node-version: 12
       - name: Install dependencies
         run: npm ci
-      - name: Release
+      - name: Dry run release
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+        run: npx semantic-release --dry-run --no-ci
