@@ -87,6 +87,7 @@ You may use the `enabled` configuration property to control `v-chat-scroll`.
 data () => {
   enabled: false,
 }
+```
 
 ### Events
 
