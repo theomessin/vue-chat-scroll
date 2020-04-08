@@ -19,6 +19,10 @@ const directive: DirectiveOptions = {
       subtree: true,
     });
   },
+
+  inserted: (el) => {
+    scrollElementToBottom(el);
+  },
 };
 
 const plugin: PluginObject<any> = {
