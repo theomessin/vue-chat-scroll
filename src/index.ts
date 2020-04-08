@@ -1,12 +1,17 @@
 import { DirectiveOptions, PluginObject } from 'vue';
 
+function scrollElementToBottom(el: Element) {
+  if (typeof el.scroll === 'function') el.scroll({ top: el.scrollHeight });
+  else el.scrollTop = el.scrollHeight; // eslint-disable-line no-param-reassign
+}
+
 const directive: DirectiveOptions = {
   bind: (el) => {
     const observer = new MutationObserver((e) => {
       const nodesWereAdded = e[e.length - 1].addedNodes.length === 1;
       const nodesWereRemoved = e[e.length - 1].removedNodes.length === 1;
       if (nodesWereAdded === false && nodesWereRemoved === false) return;
-      el.scroll({ top: el.scrollHeight });
+      scrollElementToBottom(el);
     });
 
     observer.observe(el, {
