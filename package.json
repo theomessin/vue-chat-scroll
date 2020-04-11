@@ -17,21 +17,28 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "lint": "eslint --ext .ts ./"
+    "lint": "eslint --ext .ts ./",
+    "test": "jest"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^4.0.0",
     "@semantic-release/exec": "^5.0.0",
+    "@types/jest": "^25.2.1",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@vue/test-utils": "^1.0.0-beta.33",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-typescript": "^7.2.0",
     "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-react": "^7.19.0",
+    "jest": "^25.3.0",
     "rollup": "^2.3.3",
     "rollup-plugin-uglify": "^6.0.4",
     "semantic-release": "^17.0.4",
+    "ts-jest": "^25.3.1",
     "tslib": "^1.11.1",
     "typescript": "^3.8.3",
-    "vue": "^2.0.0"
+    "vue": "^2.0.0",
+    "vue-template-compiler": "^2.6.11"
   },
   "peerDependencies": {
     "vue": "^2.0.0"
