@@ -41,3 +41,14 @@ jobs:
         run: npm ci
       - name: Run lint script
         run: npm run lint
+
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Install dependencies
+        run: npm ci
+      - name: Run test script
+        run: npm run test
