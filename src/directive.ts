@@ -1,40 +1,45 @@
 import { DirectiveOptions } from 'vue';
+import { Config, defaultConfig } from './config';
 import { scroll } from './scroll';
 
-interface Config {
-  enabled: boolean,
-};
+/**
+ * We use this state to keep track of all v-chat-scroll mutation observers.
+ * When a directive binding is updated for an element, we can fetch the
+ * existing MutationObserver, disconnect it, and replace the state
+ * with the new MutationObserver (with the new Config callback).
+ */
+const state: WeakMap<object, MutationObserver> = new WeakMap();
 
 /**
- * We use this state to keep track of all vue-chat-scroll root elements.
- * Here we store the Config which we can update when the binding is updated.
+ * This function is called when a mutation is observed.
+ * The config is used to determine what to do.
  */
-const state: WeakMap<object, Config> = new WeakMap();
-
-/**
- * This is function called when a mutation is observed.
- * The config is resolved using our state WeakMap.
- * This callback is common for ALL bindings.
- */
-const mutationCallback = (el: Element) => {
-  const config = state.get(el);
+const mutationObserved = (el: Element, config: Config) => {
   if (config.enabled) scroll(el);
 };
 
+/**
+ * This object defines the directive itself.
+ */
 export const directive: DirectiveOptions = {
-  bind: (el, binding) => {
-    const value = binding.value || {};
-    state.set(el, { enabled: value.enabled !== false });
-
-    const mutationObserver = new MutationObserver(() => { mutationCallback(el); });
-    mutationObserver.observe(el, { childList: true, subtree: true });
+  inserted: (el, binding) => {
+    const config: Config = { ...defaultConfig, ...binding.value };
+    mutationObserved(el, config);
   },
 
-  inserted: mutationCallback,
-
+  /**
+   * When the directive binding is updated we have to update our MutationObserver.
+   * We disconnect the old MutationObserver (if it exists in our previous state).
+   * We then create (and save) a new MutationObserver with the new configuration.
+   */
   update: (el, binding) => {
-    const value = binding.value || {};
-    state.set(el, { enabled: value.enabled !== false });
+    if (state.has(el)) state.get(el).disconnect();
+    const config: Config = { ...defaultConfig, ...binding.value };
+    const mutationCallback: MutationCallback = () => { mutationObserved(el, config); };
+
+    const mutationObserver = new MutationObserver(mutationCallback);
+    mutationObserver.observe(el, { childList: true, subtree: true });
+    state.set(el, mutationObserver);
   },
 };
 
