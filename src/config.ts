@@ -3,6 +3,7 @@
  */
 export interface Config {
   enabled: boolean,
+  handlePrepend: boolean,
 };
 
 /**
@@ -10,4 +11,5 @@ export interface Config {
  */
 export const defaultConfig: Config = {
   enabled: true,
+  handlePrepend: false,
 };

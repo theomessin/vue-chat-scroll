@@ -76,3 +76,33 @@ test('it obeys the enabled configuration parameter', async () => {
   expect(scroll).toHaveBeenCalledTimes(1);
   expect(scroll).toHaveBeenCalledWith(wrapper.element);
 });
+
+test('it correctly works when prepending', async () => {
+  const Component: Vue.Component = {
+    data: () => ({ handlePrepend: true, items: [1, 2, 3] }),
+    template: '<div v-chat-scroll="{ handlePrepend }"><div v-for="item in items">{{ item }}</div></div>',
+  };
+
+  const localDirective = directive;
+  const localVue = vueTestUtils.createLocalVue();
+  localVue.directive('chat-scroll', localDirective);
+  const wrapper = vueTestUtils.mount(Component, { localVue });
+
+  // Set the current wrapper to be 50 pixels tall.
+  jest.spyOn(wrapper.element, 'scrollHeight', 'get').mockImplementation(() => 50);
+  // We've scrolled all the way to the bottom.
+  jest.spyOn(wrapper.element, 'scrollTop', 'get').mockImplementation(() => 50);
+
+  (wrapper.vm as any).$data.items.pop();
+  await (wrapper.vm as any).$nextTick();
+  expect(scroll).toHaveBeenCalledWith(wrapper.element, false);
+
+  // We've now scrolled all the way to the top.
+  jest.spyOn(wrapper.element, 'scrollTop', 'get').mockImplementation(() => 0);
+  // Now the current wrapper should be 75 pixels tall (25 pixel increase).
+  jest.spyOn(wrapper.element, 'scrollHeight', 'get').mockImplementation(() => 75);
+
+  (wrapper.vm as any).$data.items.unshift(0);
+  await (wrapper.vm as any).$nextTick();
+  expect(scroll).toHaveBeenCalledWith(wrapper.element, 25);
+});
