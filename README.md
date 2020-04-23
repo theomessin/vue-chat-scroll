@@ -24,7 +24,7 @@ new Vue(...);
 If working on a proof of concept or a fiddle, it can be easier to use a script tag. We recommend using a CDN such as unpkg or jsdelvr.
 
 ```html
-<script src="https://unpkg.com/vue-chat-scroll@alpha/dist/index.js"></script>
+<script src="https://unpkg.com/vue-chat-scroll@alpha/dist/vue-chat-scroll.js"></script>
 ```
 
 _vue-chat-scroll_ will attempt to auto-register itself with Vue. This should work as long as `window.Vue` is defined.
