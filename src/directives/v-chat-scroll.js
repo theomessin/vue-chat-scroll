@@ -12,23 +12,34 @@ const scrollToBottom = (el, smooth) => {
       behavior: smooth ? 'smooth' : 'instant'
     });
   } else {
-    el.scrollTop = el.scrollHeight;
+    setTimeout(() => {
+      el.scrollTop = el.scrollHeight;
+    }, 0);
   }
 };
 
 const vChatScroll = {
   bind: (el, binding) => {
     let scrolled = false;
+    let config = binding.value || {};
+    let threshold = config.threshold || 20;
 
     el.addEventListener('scroll', e => {
-      scrolled = el.scrollTop + el.clientHeight + 1 < el.scrollHeight;
+      const hadScrolledBeforeEvent = scrolled;
+      scrolled = el.scrollTop + el.clientHeight + 1 < el.scrollHeight - threshold;
+
       if (scrolled && el.scrollTop === 0) {
         el.dispatchEvent(new Event("v-chat-scroll-top-reached"));
+      }
+
+      if (! hadScrolledBeforeEvent && scrolled) {
+        el.dispatchEvent(new CustomEvent("v-chat-scroll-scrolled-up", { detail: true }));
+      } else if (hadScrolledBeforeEvent && ! scrolled) {
+        el.dispatchEvent(new CustomEvent("v-chat-scroll-scrolled-up", { detail: false }));
       }
     });
 
     (new MutationObserver(e => {
-      let config = binding.value || {};
       if (config.enabled === false) return;
       let pause = config.always === false && scrolled;
       const addedNodes = e[e.length - 1].addedNodes.length;
