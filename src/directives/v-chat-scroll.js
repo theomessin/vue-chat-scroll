@@ -6,16 +6,16 @@
 */
 
 const scrollToBottom = (el, smooth) => {
-  if (typeof el.scroll === "function") {
-    el.scroll({
-      top: el.scrollHeight,
-      behavior: smooth ? 'smooth' : 'instant'
-    });
-  } else {
-    setTimeout(() => {
-      el.scrollTop = el.scrollHeight;
-    }, 0);
-  }
+  setTimeout(() => {
+    if (typeof el.scroll === "function") {
+      el.scroll({
+        top: el.scrollHeight,
+        behavior: smooth ? 'smooth' : 'instant'
+      });
+    } else {
+        el.scrollTop = el.scrollHeight;
+    }
+  }, 0);
 };
 
 const vChatScroll = {
