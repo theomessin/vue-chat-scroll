@@ -5,14 +5,18 @@
 * @file v-chat-scroll  directive definition
 */
 
-const scrollToBottom = (el, smooth) => {
-  if (typeof el.scroll === "function") {
-    el.scroll({
+const scrollToBottom = (el, smooth, w) => {
+  let el2 = el;
+  if (w) {
+    el2 = window
+  }
+  if (typeof el2.scroll === "function") {
+    el2.scroll({
       top: el.scrollHeight,
       behavior: smooth ? 'smooth' : 'instant'
     });
   } else {
-    el.scrollTop = el.scrollHeight;
+    el2.scrollTop = el.scrollHeight;
   }
 };
 
@@ -45,12 +49,12 @@ const vChatScroll = {
       if (loadingRemoved && config.scrollonremoved && 'smoothonremoved' in config) {
         smooth = config.smoothonremoved;
       }
-      scrollToBottom(el, smooth);
+      scrollToBottom(el, smooth, config.window);
     })).observe(el, { childList: true, subtree: true });
   },
   inserted: (el, binding) => {
     const config = binding.value || {};
-    scrollToBottom(el, config.notSmoothOnInit ? false : config.smooth);
+    scrollToBottom(el, config.notSmoothOnInit ? false : config.smooth, config.window);
   },
 };
 

@@ -10,14 +10,20 @@
   * @author Theodore Messinezis <theo@theomessin.com>
   * @file v-chat-scroll  directive definition
   */
-  var scrollToBottom = function scrollToBottom(el, smooth) {
-    if (typeof el.scroll === "function") {
-      el.scroll({
+  var scrollToBottom = function scrollToBottom(el, smooth, w) {
+    var el2 = el;
+
+    if (w) {
+      el2 = window;
+    }
+
+    if (typeof el2.scroll === "function") {
+      el2.scroll({
         top: el.scrollHeight,
         behavior: smooth ? 'smooth' : 'instant'
       });
     } else {
-      el.scrollTop = el.scrollHeight;
+      el2.scrollTop = el.scrollHeight;
     }
   };
 
@@ -51,7 +57,7 @@
           smooth = config.smoothonremoved;
         }
 
-        scrollToBottom(el, smooth);
+        scrollToBottom(el, smooth, config.window);
       }).observe(el, {
         childList: true,
         subtree: true
@@ -59,7 +65,7 @@
     },
     inserted: function inserted(el, binding) {
       var config = binding.value || {};
-      scrollToBottom(el, config.notSmoothOnInit ? false : config.smooth);
+      scrollToBottom(el, config.notSmoothOnInit ? false : config.smooth, config.window);
     }
   };
 
