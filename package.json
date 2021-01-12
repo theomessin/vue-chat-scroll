@@ -36,7 +36,7 @@
     "jest": "^25.3.0",
     "rollup": "^2.3.3",
     "rollup-plugin-uglify": "^6.0.4",
-    "semantic-release": "^17.0.4",
+    "semantic-release": "^17.2.3",
     "ts-jest": "^25.3.1",
     "tslib": "^1.11.1",
     "typescript": "^3.8.3",
