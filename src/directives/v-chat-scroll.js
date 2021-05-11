@@ -17,7 +17,7 @@ const scrollToBottom = (el, smooth) => {
 };
 
 const vChatScroll = {
-  bind: (el, binding) => {
+  mounted(el, binding) {
     let scrolled = false;
 
     el.addEventListener('scroll', e => {
@@ -48,7 +48,7 @@ const vChatScroll = {
       scrollToBottom(el, smooth);
     })).observe(el, { childList: true, subtree: true });
   },
-  inserted: (el, binding) => {
+  updated(el, binding) {
     const config = binding.value || {};
     scrollToBottom(el, config.notSmoothOnInit ? false : config.smooth);
   },

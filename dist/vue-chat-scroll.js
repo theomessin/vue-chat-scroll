@@ -22,7 +22,7 @@
   };
 
   var vChatScroll = {
-    bind: function bind(el, binding) {
+    mounted: function mounted(el, binding) {
       var scrolled = false;
       el.addEventListener('scroll', function (e) {
         scrolled = el.scrollTop + el.clientHeight + 1 < el.scrollHeight;
@@ -57,7 +57,7 @@
         subtree: true
       });
     },
-    inserted: function inserted(el, binding) {
+    updated: function updated(el, binding) {
       var config = binding.value || {};
       scrollToBottom(el, config.notSmoothOnInit ? false : config.smooth);
     }
