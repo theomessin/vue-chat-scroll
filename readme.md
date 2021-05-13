@@ -2,7 +2,7 @@
 [![](https://flat.badgen.net/npm/v/vue-chat-scroll?color=red)](https://www.npmjs.com/package/vue-chat-scroll) 
 [![](https://flat.badgen.net/jsdelivr/hits/npm/vue-chat-scroll)](https://www.jsdelivr.com/package/npm/vue-chat-scroll) [![](https://flat.badgen.net/bundlephobia/minzip/vue-chat-scroll?color=orange)](https://bundlephobia.com/result?p=vue-chat-scroll) [![](https://flat.badgen.net/npm/license/vue-chat-scroll)](https://github.com/theomessin/vue-chat-scroll/blob/master/license.md)
 
-A plugin for Vue.js 2 that scrolls to the bottom of an element when new content is added within said element. [See demo](https://jsfiddle.net/theomessin/n7542hk1/).
+A plugin for Vue.js that scrolls to the bottom of an element when new content is added within said element. [See demo](https://jsfiddle.net/theomessin/n7542hk1/).
 
 ## Installation
 
