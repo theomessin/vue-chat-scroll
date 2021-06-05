@@ -21,9 +21,34 @@ Vue.use(VueChatScroll)
 
 ### Simple Script Tag
 
+See _examples_ for both Vue 2 and Vue 3 initialization.
+
+#### Vue 2
+
 Just include `dist/vue-chat-scroll.js` _after including Vue_.
 ```html
 <script src="https://cdn.jsdelivr.net/npm/vue-chat-scroll/dist/vue-chat-scroll.min.js"></script>
+```
+
+#### Vue 3
+
+Include `dist/vue-chat-scroll.js` _after including Vue_.
+```html
+<script src="https://cdn.jsdelivr.net/npm/vue-chat-scroll/dist/vue-chat-scroll.min.js"></script>
+```
+
+In the app construction, import `window["vue-chat-scroll"]`
+```html
+  <script>
+    const { createApp } = Vue;
+    const VueChatScroll = window["vue-chat-scroll"]
+
+    var App = {
+      ...
+    }
+
+    createApp(App).use(VueChatScroll).mount("#app")
+  </script>
 ```
 
 ## Usage
