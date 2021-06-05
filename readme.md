@@ -2,7 +2,7 @@
 [![](https://flat.badgen.net/npm/v/vue-chat-scroll?color=red)](https://www.npmjs.com/package/vue-chat-scroll) 
 [![](https://flat.badgen.net/jsdelivr/hits/npm/vue-chat-scroll)](https://www.jsdelivr.com/package/npm/vue-chat-scroll) [![](https://flat.badgen.net/bundlephobia/minzip/vue-chat-scroll?color=orange)](https://bundlephobia.com/result?p=vue-chat-scroll) [![](https://flat.badgen.net/npm/license/vue-chat-scroll)](https://github.com/theomessin/vue-chat-scroll/blob/master/license.md)
 
-A plugin for Vue.js 2 that scrolls to the bottom of an element when new content is added within said element. [See demo](https://jsfiddle.net/theomessin/n7542hk1/).
+A plugin for Vue.js that scrolls to the bottom of an element when new content is added within said element. [See demo](https://jsfiddle.net/theomessin/n7542hk1/).
 
 ## Installation
 
@@ -21,9 +21,34 @@ Vue.use(VueChatScroll)
 
 ### Simple Script Tag
 
+See _examples_ for both Vue 2 and Vue 3 initialization.
+
+#### Vue 2
+
 Just include `dist/vue-chat-scroll.js` _after including Vue_.
 ```html
 <script src="https://cdn.jsdelivr.net/npm/vue-chat-scroll/dist/vue-chat-scroll.min.js"></script>
+```
+
+#### Vue 3
+
+Include `dist/vue-chat-scroll.js` _after including Vue_.
+```html
+<script src="https://cdn.jsdelivr.net/npm/vue-chat-scroll/dist/vue-chat-scroll.min.js"></script>
+```
+
+In the app construction, import `window["vue-chat-scroll"]`
+```html
+  <script>
+    const { createApp } = Vue;
+    const VueChatScroll = window["vue-chat-scroll"]
+
+    var App = {
+      ...
+    }
+
+    createApp(App).use(VueChatScroll).mount("#app")
+  </script>
 ```
 
 ## Usage

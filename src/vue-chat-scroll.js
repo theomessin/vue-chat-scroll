@@ -15,6 +15,6 @@ var VueChatScroll = {
 
 export default VueChatScroll;
 
-if (typeof window !== 'undefined' && window.Vue) {
+if (typeof window !== 'undefined' && window.Vue && window.Vue.use) {
   window.Vue.use(VueChatScroll)
 }

@@ -1,8 +1,9 @@
 {
   "name": "vue-chat-scroll",
-  "version": "1.4.0",
-  "description": "Automatic, yet conditional, scroll-to-bottom directive for Vue.js 2.0",
+  "version": "1.5.0",
+  "description": "Automatic, yet conditional, scroll-to-bottom directive for Vue.js 3.0",
   "main": "dist/vue-chat-scroll.js",
+  "types": "dist/vue-chat-scroll.d.ts",
   "scripts": {
     "build": "rollup -c"
   },
@@ -25,7 +26,7 @@
   "author": "Theodore Messinezis",
   "license": "MIT",
   "peerDependencies": {
-    "vue": "^2.4.4"
+    "vue": "^3.0.11"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

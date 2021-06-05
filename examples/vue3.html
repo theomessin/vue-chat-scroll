@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Vue 3.x Test</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="../dist/vue-chat-scroll.js"></script>
+  </head>
+
+  <body>
+    <div id="app"></div>
+
+    <script>
+      const { createApp } = Vue;
+      const VueChatScroll = window["vue-chat-scroll"]
+
+      var App = {
+          template: `
+            <div class="container">
+              <ul class="messages" v-chat-scroll="{ always: false }"> 
+                <li class="message" v-for="(m, i) in messages" :key="i">{{ m }}</li>
+              </ul>
+              <button @click="onPush">Push</button>
+              <button @click="onPop">Pop</button>
+            </div>
+          `,
+          el: '#app',
+          data() {
+            return {
+              messages: [
+                'foo',
+                'bar',
+                'baz'
+              ] 
+            }
+          },
+          methods: {
+              onPush() {
+                this.messages.push('pushed')
+              },
+              onPop() {
+                this.messages.pop()
+              }
+          }
+      }
+
+      createApp(App).use(VueChatScroll).mount("#app")
+    </script>
+  </body>
+</html>
+
+<style>
+    .container {
+      width: 200px;
+    }
+
+    .messages {
+      border-width: 1px;
+      border-style: solid;
+      height: 50px;
+      overflow-y: auto;
+    }
+
+    .message {
+    }
+</style>

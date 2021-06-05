@@ -1,7 +1,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global['vue-chat-scroll'] = factory());
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global['vue-chat-scroll'] = factory());
 }(this, (function () { 'use strict';
 
   /**
@@ -21,42 +21,51 @@
     }
   };
 
+  var mount = function mount(el, binding) {
+    var scrolled = false;
+    el.addEventListener('scroll', function (e) {
+      scrolled = el.scrollTop + el.clientHeight + 1 < el.scrollHeight;
+
+      if (scrolled && el.scrollTop === 0) {
+        el.dispatchEvent(new Event("v-chat-scroll-top-reached"));
+      }
+    });
+    new MutationObserver(function (e) {
+      var config = binding.value || {};
+      if (config.enabled === false) return;
+      var pause = config.always === false && scrolled;
+      var addedNodes = e[e.length - 1].addedNodes.length;
+      var removedNodes = e[e.length - 1].removedNodes.length;
+
+      if (config.scrollonremoved) {
+        if (pause || addedNodes != 1 && removedNodes != 1) return;
+      } else {
+        if (pause || addedNodes != 1) return;
+      }
+
+      var smooth = config.smooth;
+      var loadingRemoved = !addedNodes && removedNodes === 1;
+
+      if (loadingRemoved && config.scrollonremoved && 'smoothonremoved' in config) {
+        smooth = config.smoothonremoved;
+      }
+
+      scrollToBottom(el, smooth);
+    }).observe(el, {
+      childList: true,
+      subtree: true
+    });
+  };
+
   var vChatScroll = {
-    bind: function bind(el, binding) {
-      var scrolled = false;
-      el.addEventListener('scroll', function (e) {
-        scrolled = el.scrollTop + el.clientHeight + 1 < el.scrollHeight;
-
-        if (scrolled && el.scrollTop === 0) {
-          el.dispatchEvent(new Event("v-chat-scroll-top-reached"));
-        }
-      });
-      new MutationObserver(function (e) {
-        var config = binding.value || {};
-        if (config.enabled === false) return;
-        var pause = config.always === false && scrolled;
-        var addedNodes = e[e.length - 1].addedNodes.length;
-        var removedNodes = e[e.length - 1].removedNodes.length;
-
-        if (config.scrollonremoved) {
-          if (pause || addedNodes != 1 && removedNodes != 1) return;
-        } else {
-          if (pause || addedNodes != 1) return;
-        }
-
-        var smooth = config.smooth;
-        var loadingRemoved = !addedNodes && removedNodes === 1;
-
-        if (loadingRemoved && config.scrollonremoved && 'smoothonremoved' in config) {
-          smooth = config.smoothonremoved;
-        }
-
-        scrollToBottom(el, smooth);
-      }).observe(el, {
-        childList: true,
-        subtree: true
-      });
+    mounted: function mounted(el, binding) {
+      mount(el, binding);
     },
+    // For backwards compat with Vue 2.x
+    bind: function bind(el, binding) {
+      mount(el, binding);
+    },
+    // For backwards compat with Vue 2.x
     inserted: function inserted(el, binding) {
       var config = binding.value || {};
       scrollToBottom(el, config.notSmoothOnInit ? false : config.smooth);
@@ -75,7 +84,7 @@
     }
   };
 
-  if (typeof window !== 'undefined' && window.Vue) {
+  if (typeof window !== 'undefined' && window.Vue && window.Vue.use) {
     window.Vue.use(VueChatScroll);
   }
 
