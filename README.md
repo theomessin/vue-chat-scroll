@@ -39,10 +39,10 @@ We aim to make using _vue-chat-scroll_ as straightforward as possible. Simply us
 </div>
 ```
 
-You may configure the directive by passing an object as well. For example, the `enable` configuration flag:
+You may configure the directive by passing an object as well. For example, the `enabled` configuration flag:
 
 ```html
-<div v-chat-scroll="{ enable: false }">
+<div v-chat-scroll="{ enabled: false }">
   ...
 </div>
 ```
